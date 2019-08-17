@@ -72,6 +72,7 @@
 ## 状态管理
 后台只有user和app配置相关状态使用vuex存在全局，其它数据都由每个业务页面自己管理。
 
+## 后台工程启动[Spring-Cloud-Admin][点击打开](https://github.com/396191970/Spring-Cloud-Admin)
 ## 感谢
 感谢作者：[PanJiaChen](https://github.com/PanJiaChen/vue-element-admin)
 
