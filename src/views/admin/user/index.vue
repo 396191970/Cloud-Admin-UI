@@ -95,9 +95,9 @@ export default {
             trigger: 'blur'
           },
           {
-            min: 3,
-            max: 20,
-            message: '长度在 3 到 20 个字符',
+            min: 1,
+              max: 40,
+              message: '长度在 1 到 40 个字符',
             trigger: 'blur'
           }
         ],
@@ -108,9 +108,9 @@ export default {
             trigger: 'blur'
           },
           {
-            min: 3,
-            max: 20,
-            message: '长度在 3 到 20 个字符',
+            min: 1,
+              max: 40,
+              message: '长度在 1 到 40 个字符',
             trigger: 'blur'
           }
         ],

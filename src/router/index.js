@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 const _import = require('./_import_' + process.env.NODE_ENV);
 // in development env not use Lazy Loading,because Lazy Loading large page will cause webpack hot update too slow.so only in production use Lazy Loading
 
@@ -20,44 +21,49 @@ export const constantRouterMap = [{
   component: _import('login/index'),
   hidden: true
 },
-{
-  path: '/authredirect',
-  component: _import('login/authredirect'),
-  hidden: true
-},
-{
-  path: '/404',
-  component: _import('error/404'),
-  hidden: true
-},
-{
-  path: '/401',
-  component: _import('error/401'),
-  hidden: true
-},
-{
-  path: '/',
-  component: Layout,
-  redirect: '/dashboard',
-  name: '首页',
-  hidden: true,
-  children: [{
-    path: 'dashboard',
-    component: _import('dashboard/index')
-  }]
-},
-{
-  path: '/introduction',
-  component: Layout,
-  redirect: '/introduction/index',
-  icon: 'form',
-  noDropdown: true,
-  children: [{
-    path: 'index',
-    component: _import('introduction/index'),
-    name: '简述'
-  }]
-}
+  {
+    path: '/authredirect',
+    component: _import('login/authredirect'),
+    hidden: true
+  },
+  {
+    path: '/404',
+    component: _import('error/404'),
+    hidden: true
+  },
+  {
+    path: '/401',
+    component: _import('error/401'),
+    hidden: true
+  },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    name: '首页',
+    hidden: true,
+    children: [{
+      path: 'dashboard',
+      component: _import('dashboard/index')
+    }]
+  },
+  {
+    path: '/introduction',
+    component: Layout,
+    redirect: '/introduction/index',
+    icon: 'form',
+    noDropdown: true,
+    children: [{
+      path: 'index',
+      component: _import('introduction/index'),
+      name: '简述'
+    }]
+  },
+  {
+    path: '/charts',
+    component: _import('components/mixin'),
+    hidden: true
+  }
 ]
 
 export default new Router({
@@ -106,39 +112,107 @@ export const asyncRouterMap = [{
     authority: 'gateLogManager'
   }]
 },
-{
-  path: '/authManager',
-  component: Layout,
-  name: '基础配置管理',
-  icon: 'setting',
-  authority: 'authManager',
-  children: [{
-    path: 'serviceManager',
-    component: _import('auth/service/index'),
-    name: '用户管理',
-    authority: 'serviceManager'
-  }]
-},
-{
-  path: '/monitorManager',
-  component: Layout,
-  name: '监控模块管理',
-  icon: 'setting',
-  authority: 'monitorManager',
-  children: [{
-    path: 'serviceEurekaManager',
-    component: _import('monitor/eureka/index'),
-    name: 'Eureka注册中心',
-    authority: 'serviceEurekaManager'
-  }, {
-    path: 'serviceMonitorManager',
-    component: _import('monitor/service/index'),
-    name: '服务状态监控',
-    authority: 'serviceMonitorManager'
-  }, {
-    path: 'serviceZipkinManager',
-    component: _import('monitor/zipkin/index'),
-    name: '服务状态监控',
-    authority: 'serviceZipkinManager'
-  }]
-}];
+  {
+    path: '/authManager',
+    component: Layout,
+    name: '基础配置管理',
+    icon: 'setting',
+    authority: 'authManager',
+    children: [{
+      path: 'serviceManager',
+      component: _import('auth/service/index'),
+      name: '用户管理',
+      authority: 'serviceManager'
+    }]
+  },
+  {
+    path: '/partner',
+    component: Layout,
+    name: '合伙人系统管理',
+    icon: 'setting',
+    authority: 'partner',
+    children: [{
+      path: 'shopGroup',
+      component: _import('partner/shopGroup/index'),
+      name: '品牌管理',
+      authority: 'shopGroup'
+    }, {
+      path: 'balance',
+      component: _import('partner/balance/index'),
+      name: '余额',
+      authority: 'balance'
+    }, {
+      path: 'balanceList',
+      component: _import('partner/balanceList/index'),
+      name: '余额变更',
+      authority: 'balanceList'
+    }, {
+      path: 'distributionPackage',
+      component: _import('partner/distributionPackage/index'),
+      name: '分销套餐管理',
+      authority: 'distributionPackage'
+    }, {
+      path: 'distributionUser',
+      component: _import('partner/distributionUser/index'),
+      name: '分销码管理',
+      authority: 'distributionUser'
+    }, {
+      path: 'incomeList',
+      component: _import('partner/incomeList/index'),
+      name: '收入流水',
+      authority: 'incomeList'
+    }, {
+      path: 'partner',
+      component: _import('partner/partner/index'),
+      name: '合伙人管理',
+      authority: 'partner'
+    }, {
+      path: 'payList',
+      component: _import('partner/payList/index'),
+      name: '支出流水',
+      authority: 'payList'
+    }, {
+      path: 'product',
+      component: _import('partner/product/index'),
+      name: '产品管理',
+      authority: 'product'
+    }, {
+      path: 'shop',
+      component: _import('partner/shop/index'),
+      name: '店铺管理',
+      authority: 'shop'
+    }, {
+      path: 'shopRel',
+      component: _import('partner/shopRel/index'),
+      name: '店铺关系管理',
+      authority: 'shopRel'
+    }]
+  },
+  {
+    path: '/monitorManager',
+    component: Layout,
+    name: '监控模块管理',
+    icon: 'setting',
+    authority: 'monitorManager',
+    children: [{
+      path: 'serviceEurekaManager',
+      component: _import('monitor/eureka/index'),
+      name: 'Eureka注册中心',
+      authority: 'serviceEurekaManager'
+    }, {
+      path: 'serviceMonitorManager',
+      component: _import('monitor/service/index'),
+      name: '服务状态监控',
+      authority: 'serviceMonitorManager'
+    }, {
+      path: 'serviceZipkinManager',
+      component: _import('monitor/zipkin/index'),
+      name: '服务状态监控',
+      authority: 'serviceZipkinManager'
+    }, {
+      path: 'rabbitmq',
+      component: _import('monitor/rabbitmq/index'),
+      name: '消息队列监控',
+      authority: 'rabbitmq'
+    }]
+  }];

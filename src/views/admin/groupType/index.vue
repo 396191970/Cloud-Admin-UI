@@ -107,9 +107,9 @@ export default {
           message: '请输入编码',
           trigger: 'blur'
         }, {
-          min: 3,
-          max: 20,
-          message: '长度在 3 到 20 个字符',
+          min: 1,
+              max: 40,
+              message: '长度在 1 到 40 个字符',
           trigger: 'blur'
         }],
         name: [{
@@ -117,9 +117,9 @@ export default {
           message: '请输入类型名称',
           trigger: 'blur'
         }, {
-          min: 3,
-          max: 20,
-          message: '长度在 3 到 20 个字符',
+          min: 1,
+              max: 40,
+              message: '长度在 1 到 40 个字符',
           trigger: 'blur'
         }],
         description: [{
@@ -127,9 +127,9 @@ export default {
           message: '请输入描述',
           trigger: 'blur'
         }, {
-          min: 3,
-          max: 20,
-          message: '长度在 3 到 20 个字符',
+          min: 1,
+              max: 40,
+              message: '长度在 1 到 40 个字符',
           trigger: 'blur'
         }]
       },
