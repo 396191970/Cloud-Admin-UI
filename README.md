@@ -133,26 +133,42 @@
 ```
 ```text
  selectValue: '',
+  loading: false,
+  items: [],
 ```
 ```text
- getList() {
-        this.listLoading = true;
-        page(this.listQuery)
+ handleUpdate(row) {
+        getObj(row.id)
           .then(response => {
-            this.list = response.data.rows;
-            this.total = response.data.total;
-            this.listLoading = false;
-          })
+            this.form = response.data;
+            this.selectValue = response.data.shopGroupName;
+            this.dialogFormVisible = true;
+            this.dialogStatus = 'update';
+          });
       },
 ```
 ```text
-,
-      selectChange(val) {
+      ,remoteMethod(query) {
+        if (query !== '') {
+          this.loading = true;
+          selectValue.page({
+            name: query
+          }).then(response => {
+            this.items = response.data.rows;
+            this.total = response.data.total;
+            this.loading = false;
+            console.info('total:' + this.total)
+          });
+        } else {
+          this.items = [];
+        }
+      }
+      ,selectChange(val) {
         console.info('selectChange');
         console.info(val);
         this.form.shopGroupId = val.id;
         this.form.shopGroupName = val.name;
         console.info(this.form);
       }
-    }
+    
 ```
